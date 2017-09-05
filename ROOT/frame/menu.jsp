@@ -251,19 +251,43 @@
                 </table>
             </td>
         </tr>
+        <tr style="height:1%">
+            <td>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="BaseMenuItem"
+                        onclick="show(this, '/aliyun/buckets.jsp');">
+                    <tr>
+                        <td align="center" nowrap width="98%">
+                            OSS
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr style="height:1%">
+            <td>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="BaseMenuItem"
+                        onclick="show(this, '/sys/exportdb.jsp');">
+                    <tr>
+                        <td align="center" nowrap width="98%">
+                            数据库导出
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr style="height:1%">
+            <td>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="BaseMenuItem"
+                        onclick="show(this, '/sys/importdb.jsp');">
+                    <tr>
+                        <td align="center" nowrap width="98%">
+                            数据库导入
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
     </sys:CheckMenuRightTag>
-    <tr style="height:1%">
-        <td>
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="BaseMenuItem"
-                    onclick="show(this, '/login.do?method=logout');">
-                <tr>
-                    <td align="center" nowrap width="98%">
-                        注销
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
 <tr style="height:17px;cursor:pointer;" onclick="updateShow(this);">
     <td>
         <table border="0" cellpadding="0" cellspacing="0" width="100%"
@@ -307,6 +331,30 @@
             <tr>
                 <td align="center" nowrap width="98%">
                     分数查询
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr style="height:17px;cursor:pointer;" onclick="updateShow(this);">
+    <td>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"
+               style="height:100%;background-image:url(../images/panelbar/sep_bg.gif)">
+            <tr>
+                <td width="1"><img src="../images/panelbar/sep_begin.gif" border="0"/></td>
+                <td align="center" nowrap><b>其他</b></td>
+                <td width="1"><img src="../images/panelbar/sep_end.gif" border="0"/></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr style="height:1%">
+    <td>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="BaseMenuItem"
+                onclick="show(this, '/login.do?method=logout');">
+            <tr>
+                <td align="center" nowrap width="98%">
+                    注销
                 </td>
             </tr>
         </table>
