@@ -88,9 +88,9 @@
                     {
                         table.rows[j].deleteCell(cols);
                     }
-                    rowLength = 1;
-                    startRow = i;
                 }
+                rowLength = 1;
+                startRow = i;
             }
         }
         if(rowLength > 1)

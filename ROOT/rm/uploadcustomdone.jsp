@@ -167,7 +167,7 @@
     }
 
     /* 保存OSS */
-    System.out.println("上传OSS   ");
+    System.out.println("上传OSS");
     OssUtils.uploadFile("ellias-ia", "rm/zizhi/" + path + "/" + path + ".mp3", mp3Bytes);
     for(String key : imdnames.keySet()) {
         OssUtils.uploadFile("ellias-ia", "rm/zizhi/" + path + "/" + key, imdnames.get(key));
