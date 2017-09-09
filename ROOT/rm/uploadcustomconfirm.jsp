@@ -192,6 +192,7 @@
         out.print("请求格式不正确");
         return;
     }
+    System.out.println("文件读取完毕，开始校验");
     DataSource ds = (DataSource) GlobalContext.getSpringContext().getBean("mysql_ds");
     JdbcTemplate jt = new JdbcTemplate(ds);
 
