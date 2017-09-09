@@ -125,6 +125,7 @@
                         closeStream(fileItems);
                         return;
                     }
+                    System.out.println("读取mp3:" + item.getName());
                     mp3Bytes = new byte[(int)item.getSize()];
                     item.getInputStream().read(mp3Bytes);
                     String tmpname = "mp3_" + item.getName() + now;
@@ -138,6 +139,7 @@
                         closeStream(fileItems);
                         return;
                     }
+                    System.out.println("读取png:" + item.getName());
                     boolean hdPng = item.getFieldName().equals("hdpng"); //hdpng=小图
                     if(hdPng) {
                         pngBytes[0] = new byte[(int)item.getSize()];
@@ -175,6 +177,7 @@
                         closeStream(fileItems);
                         return;
                     }
+                    System.out.println("读取imd:" + item.getName());
                     byte[] filebytes = new byte[(int)item.getSize()];
                     item.getInputStream().read(filebytes);
                     String tmpname = files.size() + "_" + item.getName() + now;
