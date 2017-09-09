@@ -90,6 +90,13 @@
     }
 %>
 <%
+    request.getSession().removeAttribute("rm_customsong_param");
+    request.getSession().removeAttribute("rm_customsong_mp3bytes");
+    request.getSession().removeAttribute("rm_customsong_imdbytes");
+    request.getSession().removeAttribute("rm_customsong_imdranks");
+    request.getSession().removeAttribute("rm_customsong_imdmd5s");
+    request.getSession().removeAttribute("rm_customsong_imgs");
+
     Map<String, String> params = new HashMap<String, String>();
     Map<String, byte[]> files = new HashMap<String, byte[]>();
     Map<String, double[]> ranks = new HashMap<String, double[]>();

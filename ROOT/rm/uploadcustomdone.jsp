@@ -171,6 +171,15 @@
     }
     OssUtils.uploadFile("ellias-ia", "rm/zizhi/" + path + "/" + path + ".png", pngBytes[1]);
     OssUtils.uploadFile("ellias-ia", "rm/zizhi/" + path + "/" + path + "_title_ipad.png", pngBytes[0]);
+
+    /* 清理session */
+    request.getSession().removeAttribute("rm_customsong_param");
+    request.getSession().removeAttribute("rm_customsong_mp3bytes");
+    request.getSession().removeAttribute("rm_customsong_imdbytes");
+    request.getSession().removeAttribute("rm_customsong_imdranks");
+    request.getSession().removeAttribute("rm_customsong_imdmd5s");
+    request.getSession().removeAttribute("rm_customsong_imgs");
+
     out.print("文件保存完成，路径：" + path);
 %>
 <body>
