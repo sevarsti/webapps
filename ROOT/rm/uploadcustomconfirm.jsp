@@ -150,11 +150,11 @@
                         bais.close();
                         int width = bi.getWidth();
                         int height = bi.getHeight();
-                        if(width != 140 || height != 60) {
-                            out.print("小图尺寸不是140x60");
-                            closeStream(fileItems);
-                            return;
-                        }
+//                        if(width != 140 || height != 60) {
+//                            out.print("小图尺寸不是140x60");
+//                            closeStream(fileItems);
+//                            return;
+//                        }
                     } else {
                         pngBytes[1] = new byte[(int)item.getSize()];
                         item.getInputStream().read(pngBytes[1]);
@@ -163,11 +163,11 @@
                         bais.close();
                         int width = bi.getWidth();
                         int height = bi.getHeight();
-                        if(width != 480 || height != 320) {
-                            out.print("大图尺寸不是480x320");
-                            closeStream(fileItems);
-                            return;
-                        }
+//                        if(width != 480 || height != 320) {
+//                            out.print("大图尺寸不是480x320");
+//                            closeStream(fileItems);
+//                            return;
+//                        }
                     }
                 } else if(item.getFieldName().equals("imd")) {
                     if(StringUtils.isEmpty(item.getName())) {
