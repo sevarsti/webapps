@@ -71,23 +71,26 @@
 %>
 <script type="text/javascript">
     var table = document.getElementById("table");
-    for(var cols = 3; cols >= 0; cols--) {
+//    for(var cols = 3; cols >= 0; cols--) {
         var startRow = 1, rowLength = 1;
         for(var i = 2; i < table.rows.length; i++)
         {
-            if(table.rows[i].cells[cols].innerHTML == table.rows[i - 1].cells[cols].innerHTML)
+            if(table.rows[i].cells[1].innerHTML == table.rows[i - 1].cells[1].innerHTML)
             {
                 rowLength += 1;
             }
             else
             {
-                table.rows[startRow].cells[cols].rowSpan = rowLength;
-                for(var j = startRow + 1; j < startRow + rowLength; j++)
+                for(var cols = 3; cols >= 0; cols--)
                 {
-                    table.rows[j].deleteCell(cols);
+                    table.rows[startRow].cells[cols].rowSpan = rowLength;
+                    for(var j = startRow + 1; j < startRow + rowLength; j++)
+                    {
+                        table.rows[j].deleteCell(cols);
+                    }
+                    rowLength = 1;
+                    startRow = i;
                 }
-                rowLength = 1;
-                startRow = i;
             }
         }
         if(rowLength > 1)
@@ -98,7 +101,7 @@
                 table.rows[j].deleteCell(cols);
             }
         }
-    }
+//    }
 </script>
 </body>
 </html>
