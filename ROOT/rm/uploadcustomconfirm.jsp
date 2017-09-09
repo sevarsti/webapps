@@ -131,6 +131,7 @@
                     String tmpname = "mp3_" + item.getName() + now;
                     String filepath = System.getProperty("java.io.tmpdir") + File.separator + tmpname;
                     SysUtils.addTempFile(filepath, mp3Bytes, 60 * 10);
+                    System.out.println("½âÎömp3³¤¶È");
                     maxlength = Math.max(maxlength, FFMpegUtils.getAudioLength(filepath));
                     params.put("md5", UtilFunctions.md5(mp3Bytes));
                 } else if(item.getFieldName().endsWith("png")) {
