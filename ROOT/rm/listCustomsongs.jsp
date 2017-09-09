@@ -75,11 +75,11 @@
         var startRow = 1, rowLength = 1;
         for(var i = 2; i < table.rows.length; i++)
         {
-            if(table.rows[i].cells[1].innerHTML == table.rows[i - 1].cells[1].innerHTML && i != table.rows.length)
+            if(table.rows[i].cells[1].innerHTML == table.rows[i - 1].cells[1].innerHTML && i != (table.rows.length - 1))
             {
                 rowLength += 1;
             }
-            else if(table.rows[i].cells[1].innerHTML == table.rows[i - 1].cells[1].innerHTML && i == table.rows.length)
+            else if(table.rows[i].cells[1].innerHTML == table.rows[i - 1].cells[1].innerHTML && i == (table.rows.length - 1))
             {
                 rowLength += 1;
                 for(var cols = 3; cols >= 0; cols--)
