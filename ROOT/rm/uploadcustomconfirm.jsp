@@ -223,7 +223,11 @@
     if(list.size() > 0) {
         for(Map<String, Object> m : list) {
             String md5 = m.get("imdmd5").toString();
+            List<String> keys = new ArrayList<String>();
             for(String k : imdmd5.keySet()) {
+                keys.add(k);
+            }
+            for(String k : keys) {
                 if(imdmd5.get(k).equals(md5)) {
                     duplicatedImd.add(new String[]{k, md5});
                     files.remove(k);
