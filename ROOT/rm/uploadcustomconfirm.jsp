@@ -208,7 +208,7 @@
     }
 
     /* 检查是否有imd MD5重复 */
-    StringBuilder sql = new StringBuilder("select imdmd5 from rm_customsongimd where songid = (select id from rm_customsong where path=?) md5 in(");
+    StringBuilder sql = new StringBuilder("select imdmd5 from rm_customsongimd where songid = (select id from rm_customsong where path=?) and md5 in(");
     List<String[]> duplicatedImd = new ArrayList<String[]>();
     int count = 0;
     for(String key : imdmd5.keySet()) {
