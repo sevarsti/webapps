@@ -72,7 +72,7 @@
     byte[] mp3Bytes = (byte[]) request.getSession().getAttribute("rm_customsong_mp3bytes");
     int length = Integer.parseInt(params.get("length"));
     Map<String, byte[]> files = (Map<String, byte[]>)request.getSession().getAttribute("rm_customsong_imdbytes");
-    Map<String, double[]> ranks = (Map<String, double[]>)request.getSession().getAttribute("rm_customsong_imdranks"); //key, rank, difficulty
+    Map<String, double[]> ranks = (Map<String, double[]>)request.getSession().getAttribute("rm_customsong_imdranks"); //rank, difficulty, key, totalkey
     Map<String, String> imdmd5 = (Map<String, String>)request.getSession().getAttribute("rm_customsong_imdmd5s");
     byte[][] pngBytes = (byte[][])request.getSession().getAttribute("rm_customsong_imgs"); //0=Ð¡Í¼£¬1=´óÍ¼
 
@@ -106,7 +106,7 @@
     List<Object[]> insertparams = new ArrayList<Object[]>();
     for(int i = 0; i < sortedkey.size(); i++) {
         String key = sortedkey.get(i);
-        objs = new Object[6];
+        objs = new Object[7];
         objs[0] = songid;
         int newkey = (int)ranks.get(key)[2];
         objs[1] = newkey;
@@ -124,14 +124,15 @@
         objs[3] = ((double)((int)(ranks.get(key)[0] * 1000))) / 1000d;
         objs[4] = ((double)((int)(ranks.get(key)[1] * 1000))) / 1000d;
         objs[5] = imdmd5.get(key);
+        objs[6] = (int)(ranks.get(key)[3]);
         insertparams.add(objs);
     }
     for(Object[] obj : insertparams) {
-        jt.update("insert into rm_customsongimd(songid, `key`, `level`, rank, difficulty, imdmd5) values(?,?,?,?,?,?)", obj);
+        jt.update("insert into rm_customsongimd(songid, `key`, `level`, rank, difficulty, imdmd5, totalkey) values(?,?,?,?,?,?,?)", obj);
     }
 
     if(!mp3exist) {
-        objs = new Object[7];
+        objs = new Object[8];
         objs[0] = name;
         objs[1] = path;
         objs[2] = author;

@@ -176,7 +176,7 @@
                     item.getInputStream().read(filebytes);
                     String tmpname = files.size() + "_" + item.getName() + now;
                     files.put(tmpname, filebytes);
-                    ranks.put(tmpname, new double[]{ImdUtils.calcRank(filebytes), ImdUtils.calcDifficult(filebytes), ImdUtils.getKey(filebytes)});
+                    ranks.put(tmpname, new double[]{ImdUtils.calcRank(filebytes), ImdUtils.calcDifficult(filebytes), ImdUtils.getKey(filebytes), ImdUtils.getTotalKeys(filebytes)});
                     imdmd5.put(tmpname, UtilFunctions.md5(filebytes));
                     maxlength = Math.max(maxlength, ImdUtils.getLength(filebytes) / 1000);
                     double newbpm = ImdUtils.getBpm(filebytes);
@@ -270,7 +270,7 @@
     request.getSession().setAttribute("rm_customsong_param", params);
     request.getSession().setAttribute("rm_customsong_mp3bytes", mp3Bytes);
     request.getSession().setAttribute("rm_customsong_imdbytes", files);
-    request.getSession().setAttribute("rm_customsong_imdranks", ranks); //rank, difficulty, key
+    request.getSession().setAttribute("rm_customsong_imdranks", ranks); //rank, difficulty, key,totalkey
     request.getSession().setAttribute("rm_customsong_imdmd5s", imdmd5);
     request.getSession().setAttribute("rm_customsong_imgs", pngBytes);
 %>
@@ -324,6 +324,9 @@
             ÄÑ¶È
         </td>
         <td class="head">
+            ¼üÊý
+        </td>
+        <td class="head">
             MD5
         </td>
     </tr>
@@ -342,6 +345,9 @@
         </td>
         <td class="fieldvalue">
             <%=df.format(ranks.get(key)[1])%>
+        </td>
+        <td class="fieldvalue">
+            <%=df.format(ranks.get(key)[3])%>
         </td>
         <td class="fieldvalue">
             <%=imdmd5.get(key)%>
