@@ -67,6 +67,7 @@
     String path = params.get("path");
     String author = params.get("author");
     String memo = params.get("memo");
+    double bpm = Double.parseDouble(params.get("bpm"));
     String mp3md5 = params.get("md5");
     byte[] mp3Bytes = (byte[]) request.getSession().getAttribute("rm_customsong_mp3bytes");
     int length = Integer.parseInt(params.get("length"));
@@ -85,16 +86,22 @@
     /* 检查mp3的md5是否存在 */
     boolean mp3exist = false;
     List<Map<String, Object>> list = jt.queryForList("select * from rm_customsong where md5 = ? and path = ?", new Object[]{mp3md5, path});
+    int[] existcount = new int[3]; //新增谱面需要记录当前谱面数量
     if(list.size() > 0) {
         songid = ((Number)list.get(0).get("id")).intValue();
         mp3exist = true;
+        list = jt.queryForList("select `key`, count(1) as c from rm_customsongimd where songid = ? group by `key`", new Object[]{songid});
+        for(Map<String, Object> m : list) {
+            existcount[((Number)m.get("key")).intValue() - 4] = ((Number)m.get("c")).intValue();
+        }
     } else {
         songid = dao.getId("RM_CUSTOMSONG");
     }
+
     System.out.println("保存自制谱信息");
     List<String> sortedkey = sortKey(ranks);
-    int prvkey = 0;
-    int keycount = 1;
+    int prvkey = 4;
+    int keycount = existcount[0];
     Object[] objs;
     List<Object[]> insertparams = new ArrayList<Object[]>();
     for(int i = 0; i < sortedkey.size(); i++) {
@@ -111,7 +118,7 @@
             }
         } else {
             prvkey = newkey;
-            keycount = 1;
+            keycount = existcount[newkey - 4] + 1;
         }
         objs[2] = keycount;
         objs[3] = ((double)((int)(ranks.get(key)[0] * 1000))) / 1000d;
@@ -132,7 +139,8 @@
         objs[4] = length;
         objs[5] = songid;
         objs[6] = memo;
-        jt.update("insert into rm_customsong(name, path, author, md5, length, id, memo) values(?,?,?,?,?,?,?)", objs);
+        objs[7] = bpm;
+        jt.update("insert into rm_customsong(name, path, author, md5, length, id, memo, bpm) values(?,?,?,?,?,?,?,?)", objs);
 
     }
     /* 保存文件 */
@@ -162,8 +170,8 @@
         fos.close();
     }
 
-    prvkey = 0;
-    keycount = 1;
+    prvkey = 4;
+    keycount = existcount[0];
     for(int i = 0; i < sortedkey.size(); i++) {
         String imdkey = sortedkey.get(i);
         int newkey = (int)ranks.get(imdkey)[2];
@@ -171,7 +179,7 @@
             keycount++;
         } else {
             prvkey = newkey;
-            keycount = 1;
+            keycount = existcount[newkey - 4] + 1;
         }
         String level = "";
         if(keycount == 3) {
