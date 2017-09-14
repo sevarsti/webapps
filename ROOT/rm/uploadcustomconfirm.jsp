@@ -278,37 +278,37 @@
 <table border="0" cellpadding="1" cellspacing="1" bgcolor="black">
     <tr>
         <td class="fieldname">名字</td>
-        <td class="fieldvalue" colspan="4">
+        <td class="fieldvalue" colspan="5">
             <%=params.get("name")%>
         </td>
     </tr>
     <tr>
         <td class="fieldname">路径</td>
-        <td class="fieldvalue" colspan="4">
+        <td class="fieldvalue" colspan="5">
             <%=params.get("path")%>
         </td>
     </tr>
     <tr>
         <td class="fieldname">作者</td>
-        <td class="fieldvalue" colspan="4">
+        <td class="fieldvalue" colspan="5">
             <%=params.get("author")%>
         </td>
     </tr>
     <tr>
         <td class="fieldname">备注</td>
-        <td class="fieldvalue" colspan="4">
+        <td class="fieldvalue" colspan="5">
             <%=params.get("memo")%>
         </td>
     </tr>
     <tr>
         <td class="fieldname">长度</td>
-        <td class="fieldvalue" colspan="4">
+        <td class="fieldvalue" colspan="5">
             <%=RMUtils.convertLength(maxlength)%>
         </td>
     </tr>
     <tr>
         <td class="fieldname">MD5</td>
-        <td class="fieldvalue" colspan="4">
+        <td class="fieldvalue" colspan="5">
             <%=params.get("md5")%>
         </td>
     </tr>
@@ -347,7 +347,7 @@
             <%=df.format(ranks.get(key)[1])%>
         </td>
         <td class="fieldvalue">
-            <%=df.format(ranks.get(key)[3])%>
+            <%=new DecimalFormat("0").format(ranks.get(key)[3])%>
         </td>
         <td class="fieldvalue">
             <%=imdmd5.get(key)%>
