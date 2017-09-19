@@ -308,10 +308,10 @@
         }
     %>
 </table>
+<form action="uploadcustomdone.jsp">
 <%
     if(duplicatedMp3.size() > 0) {
 %>
-<form action="uploadcustomdone.jsp">
 以下MP3文件MD5值重复，请选择是否要合并：<br/>
 <table border="0" cellpadding="1" cellspacing="1" id="table">
     <tr class="head">
