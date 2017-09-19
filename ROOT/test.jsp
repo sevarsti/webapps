@@ -438,10 +438,10 @@
     list.add(new String[]{"430", "jingyinshuangzi"});
     list.add(new String[]{"431", "tsaibomba"});
 
-    DataSource ds = (DataSource) GlobalContext.getSpringContext().getBean("mysql_ds");
-    JdbcTemplate jt = new JdbcTemplate(ds);
     Pattern imdpattern = Pattern.compile(".+_([4-6]k)_(ez|nm|hd)(.+)");
-    for(String[] m : list) {
+    for(int i = 0; i < list.size(); i++) {
+        String[] m = list.get(i);
+        System.out.println(i + ":"+m[0] + "/"+m[1]);
         int id = Integer.parseInt(m[0]);
         String path = m[1];
         File file = new File("D:\\rm\\zizhi\\" + path);
