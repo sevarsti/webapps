@@ -128,39 +128,41 @@
                     maxlength = Math.max(maxlength, FFMpegUtils.getAudioLength(filepath));
                     params.put("md5", UtilFunctions.md5(mp3Bytes));
                 } else if(item.getFieldName().endsWith("png")) {
-                    if(!item.getName().toLowerCase().endsWith(".png")) {
-                        out.println("png文件扩展名不正确");
-                        closeStream(fileItems);
-                        return;
-                    }
-                    System.out.println("读取png:" + item.getName());
-                    boolean hdPng = item.getFieldName().equals("hdpng"); //hdpng=小图
-                    if(hdPng) {
-                        pngBytes[0] = new byte[(int)item.getSize()];
-                        item.getInputStream().read(pngBytes[0]);
-                        ByteArrayInputStream bais = new ByteArrayInputStream(pngBytes[0]);
-                        BufferedImage bi = ImageIO.read(bais);
-                        bais.close();
-                        int width = bi.getWidth();
-                        int height = bi.getHeight();
-//                        if(width != 140 || height != 60) {
-//                            out.print("小图尺寸不是140x60");
-//                            closeStream(fileItems);
-//                            return;
-//                        }
-                    } else {
-                        pngBytes[1] = new byte[(int)item.getSize()];
-                        item.getInputStream().read(pngBytes[1]);
-                        ByteArrayInputStream bais = new ByteArrayInputStream(pngBytes[1]);
-                        BufferedImage bi = ImageIO.read(bais);
-                        bais.close();
-                        int width = bi.getWidth();
-                        int height = bi.getHeight();
-//                        if(width != 480 || height != 320) {
-//                            out.print("大图尺寸不是480x320");
-//                            closeStream(fileItems);
-//                            return;
-//                        }
+                    if(item.getName().length() > 0) {
+                        if(!item.getName().toLowerCase().endsWith(".png")) {
+                            out.println("png文件扩展名不正确");
+                            closeStream(fileItems);
+                            return;
+                        }
+                        System.out.println("读取png:" + item.getName());
+                        boolean hdPng = item.getFieldName().equals("hdpng"); //hdpng=小图
+                        if(hdPng) {
+                            pngBytes[0] = new byte[(int)item.getSize()];
+                            item.getInputStream().read(pngBytes[0]);
+                            ByteArrayInputStream bais = new ByteArrayInputStream(pngBytes[0]);
+                            BufferedImage bi = ImageIO.read(bais);
+                            bais.close();
+                            int width = bi.getWidth();
+                            int height = bi.getHeight();
+    //                        if(width != 140 || height != 60) {
+    //                            out.print("小图尺寸不是140x60");
+    //                            closeStream(fileItems);
+    //                            return;
+    //                        }
+                        } else {
+                            pngBytes[1] = new byte[(int)item.getSize()];
+                            item.getInputStream().read(pngBytes[1]);
+                            ByteArrayInputStream bais = new ByteArrayInputStream(pngBytes[1]);
+                            BufferedImage bi = ImageIO.read(bais);
+                            bais.close();
+                            int width = bi.getWidth();
+                            int height = bi.getHeight();
+    //                        if(width != 480 || height != 320) {
+    //                            out.print("大图尺寸不是480x320");
+    //                            closeStream(fileItems);
+    //                            return;
+    //                        }
+                        }
                     }
                 } else if(item.getFieldName().equals("imd")) {
                     if(StringUtils.isEmpty(item.getName())) {

@@ -158,17 +158,21 @@
         fos.write(mp3Bytes);
         fos.close();
 
-        File pngfile = new File(dir + File.separator + path + ".png");
-        pngfile.createNewFile();
-        fos = new FileOutputStream(pngfile);
-        fos.write(pngBytes[1]);
-        fos.close();
+        if(pngBytes[1] != null) {
+            File pngfile = new File(dir + File.separator + path + ".png");
+            pngfile.createNewFile();
+            fos = new FileOutputStream(pngfile);
+            fos.write(pngBytes[1]);
+            fos.close();
+        }
 
-        File pnghdfile = new File(dir + File.separator + path + "_title_ipad.png");
-        pnghdfile.createNewFile();
-        fos = new FileOutputStream(pnghdfile);
-        fos.write(pngBytes[0]);
-        fos.close();
+        if(pngBytes[0] != null) {
+            File pnghdfile = new File(dir + File.separator + path + "_title_ipad.png");
+            pnghdfile.createNewFile();
+            fos = new FileOutputStream(pnghdfile);
+            fos.write(pngBytes[0]);
+            fos.close();
+        }
     }
 
     prvkey = 4;
