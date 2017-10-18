@@ -47,7 +47,7 @@
     function callFunction(methodName) {
         var param = document.getElementById('param').value;
         document.getElementById('content').innerHTML = '';
-        eval(methodName + "(" + param + "),after");
+        eval(methodName + "(" + param + ",after)");
 //        window[methodName.substring(0,methodName.indexOf('.'))].callFunction(methodName, param, after);
         document.getElementById('param').value = '';
     }
