@@ -49,7 +49,7 @@
         document.getElementById('content').innerHTML = '';
         if(param.length == 0)
         {
-            eval(methodName + "(" + ",after)");
+            eval(methodName + "(" + "after)");
         }
         else
         {
