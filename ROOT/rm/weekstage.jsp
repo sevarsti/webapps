@@ -108,7 +108,7 @@
                 int full = Integer.parseInt(obj.get("key" + (k + 3) + lv).toString()) * 600 - 22740;
                 teamchallenges.add(new String[]{start, end, totalIndex, songId, songName, level, key, target, score + "/" + (full - score), has + ""});
             } else {
-                teamchallenges.add(new String[]{start, end, totalIndex, songId, songName, level, key, target});
+                teamchallenges.add(new String[]{start, end, totalIndex, songId, songName, level, key, target, ""});
             }
         }
 
