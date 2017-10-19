@@ -95,7 +95,7 @@
             String songName = allSongs.get(songId);
             String start = String.valueOf(obj.get("startdate"));
             String end = obj.get("enddate") == null ? "" : (obj.get("enddate").toString());
-            int has = ((Integer) obj.get("level")).intValue();
+            int has = ((Integer) obj.get("has")).intValue();
             int lv = ((Integer) obj.get("level")).intValue();
             String level = lv == 1 ? "EASY" : (lv == 2 ? "NORMAL" : "HARD");
             int k = ((Integer) obj.get("key")).intValue();
