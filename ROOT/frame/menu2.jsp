@@ -72,9 +72,7 @@
     List<Map<String, Object>> list = jt.queryForList("select id, title, link, `right` from sys_menu where removetag = 0 order by `order`");
     Object empObj = request.getSession().getAttribute("employee");
     int empId = 0;
-    String empname = "";
     if(empObj != null) {
-        empname = ((Employee) empObj).getLoginname();
         empId = ((Employee) empObj).getId();
     }
     List<String> parentPath = new ArrayList<String>();
@@ -89,21 +87,17 @@
             }
             parentPath.add(menuname);
             boolean hasRight = true;
-            if("ellias".equalsIgnoreCase(empname)) {
-
-            } else {
-                if("1".equals(String.valueOf(map.get("right")))) {
-                    List<String> mypaths = new ArrayList<String>(parentPath);
-                    int resId = getResourceId(resourceDao, mypaths);
-                    if(resId == 0) {
-                        hasRight = false;
-                    } else {
-                        hasRight = rightDao.hasRight(resId, empId);
-                    }
-                    parentRight = hasRight;
+            if("1".equals(String.valueOf(map.get("right")))) {
+                List<String> mypaths = new ArrayList<String>(parentPath);
+                int resId = getResourceId(resourceDao, mypaths);
+                if(resId == 0) {
+                    hasRight = false;
                 } else {
-                    parentRight = true;
+                    hasRight = rightDao.hasRight(resId, empId);
                 }
+                parentRight = hasRight;
+            } else {
+                parentRight = true;
             }
             if(hasRight) {
                 out.print("<tr style=\"height:17px;cursor:pointer;\" onclick=\"updateShow(this);\">");
