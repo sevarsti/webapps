@@ -15387,6 +15387,11 @@ function ReadInput(n, b) {
     ReadBuffer();
     ReadData();
 }
+function forJava(filename, base64code) {
+    ReadInput(filename, new Uint8Array().fromBase64(base64code));
+//    alert(FileData.ToText("png"));
+    document.getElementById('result').innerHTML =  FileData.ToText("png");
+}
 function ReadBlob(n, b) {
     if(!SupportAPI("File")) {
         alert("当前浏览器内核不支持File API。");
@@ -15650,5 +15655,12 @@ function Initialize() {
         }
     })();
 }</script>
+<input type="test" onclick="forJava('daybyday_4k_ez.imd', document.getElementById('base64value').value)"/>
+<textarea id="base64value">
+
+</textarea>
+<textarea id="result">
+
+</textarea>
 </body>
 </html>
