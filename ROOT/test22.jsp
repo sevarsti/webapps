@@ -1,4 +1,5 @@
 <%@ page import="com.saille.bbs.yssy.YSSYUtil"%>
+<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ellias
@@ -8,35 +9,21 @@
 --%>
 <%--<%@ page contentType="text/html;charset=gb2312" language="java" pageEncoding="gb2312" %>--%>
 <html>
+<head><title>Simple jsp page</title></head>
+<body>
 <%
-    YSSYUtil util = new YSSYUtil();
     try {
-        String cookie = util.login("pq", "pmgkglory");
-        if(cookie != null) {
-            String smd = util.viewSmd("pq", cookie).trim();
-            if(smd != null && !smd.equals("")) {
-                System.out.print("smd is not null");
-            } else {
+        Map<Thread, StackTraceElement[]> threads = Thread.getAllStackTraces();
+        for(Thread t : threads.keySet()) {
+            out.println(t.getName() + "<br/>");
+            for(StackTraceElement ste : threads.get(t)) {
+                out.println("&nbsp;&nbsp;");
+                out.println(ste.getClassName() + "." + ste.getMethodName() + ":" + ste.getLineNumber() + "<br/>");
             }
         }
-//            System.out.print(i + ":" + s + "...");
-//            i++;
-//            String cookie = util.login(s, "pmgkglory");
-//            System.out.print("ok...");
-//            if(cookie != null) {
-//                ids.add(new String[]{s, cookie});
-//                String smd = util.viewSmd(s, cookie).trim();
-//                if(smd != null && !smd.equals("")) {
-//                    System.out.print("smd is not null");
-//                }
-//            }
-//            System.out.println("");
-//        }
     } catch(Exception ex) {
         ex.printStackTrace();
     }
 %>
-  <head><title>Simple jsp page</title></head>
-  <body>
   </body>
 </html>

@@ -1,0 +1,14 @@
+JAVA_HOME=/usr/java6
+JAVACMD=java
+RUN_BIN=/home/bf/bin/bfdataforward
+TMPCLASSPATH='';
+
+cd $RUN_BIN
+
+CLASSPATH=$RUN_BIN:$TMPCLASSPATH$CLASSPATH
+PATH=$JAVA_HOME/jre/bin:$PATH
+
+echo $CLASSPATH
+
+export CLASSPATH=$CLASSPATH
+/usr/java6/bin/java -Dfile.encoding=GBK DataForward

@@ -7,7 +7,7 @@
             maxIdle="30"
             maxWait="10000"
             username="root"
-            password="sjtuagent"
+            password="huaan"
             driverClassName="com.mysql.jdbc.Driver"
             characterEncoding="GB2312"
             url="jdbc:mysql://localhost:3306/ellias"/>
