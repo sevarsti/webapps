@@ -88,6 +88,7 @@
         else
         {
             var idx = errors.length;
+            errors[idx] = new Array();
             errors[idx][0] = a;
             errors[idx][1] = b;
         }
@@ -98,6 +99,7 @@
             document.getElementById('content').style.fontSize = "100px";
             var input = "<input type=\"button\" style=\"font-size: 100px;color: red;\" value=\"再来一次\" onclick=\"total = 0;correct = 0;begindate = new Date();begin();\"/>";
             document.getElementById('content').innerHTML = "一共答对" + correct + "/" + total + "题，用时" + sec / 1000 + "秒" + input;
+            recordError();
         }
         else
         {
@@ -117,6 +119,7 @@
                 }
                 sendstr += errors[i][0] + "-" + errors[i][1];
             }
+            HMFDwr.recordMath99Error(sendstr);
         }
         errors = new Array();
     }
