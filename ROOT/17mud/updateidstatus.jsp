@@ -129,6 +129,15 @@
         out.print(content);
         return;
     }
+
+    void queryid(HttpServletRequest request, JspWriter out) throws Exception {
+        String ret = "";
+        for(String s : IDUtils.ids.keySet()) {
+            ret += "," + s;
+        }
+        out.print(ret.substring(1));
+        return;
+    }
 %>
 <%
     String type = request.getParameter("type");
@@ -136,5 +145,7 @@
         update(request, out);
     } else if("query".equals(type)) {
         query(request, out);
+    } else if("queryid".equals(type)) {
+        queryid(request, out);
     }
 %>
